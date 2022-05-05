@@ -2,7 +2,9 @@ import { Ingredient } from '../models/ingredient.js'
 
 function createIngredient(req, res) {
   Ingredient.create(req.body)
-  .then((ingredient) => res.json(ingredient))
+  .then(ingredient => {
+    res.redirect('/ingredients')
+  })
   .catch(err => {
     console.log(err)
     res.json(err)
@@ -11,7 +13,12 @@ function createIngredient(req, res) {
 
 function ingredientIndex(req, res) {
   Ingredient.find({})
-  .then(ingredients => res.json(ingredients))
+  .then(ingredients => {
+    res.render('ingredients/index', {
+      ingredients,
+      title: "All Ingredients"
+    })
+  })
   .catch(err => {
 		console.log(err)
     res.json(err)

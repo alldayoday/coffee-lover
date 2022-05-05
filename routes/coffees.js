@@ -10,6 +10,7 @@ router.patch('/:id/flip-hot', isLoggedIn, coffeesCtrl.flipHot)
 router.get('/:id/edit', isLoggedIn, coffeesCtrl.edit)
 router.put('/:id', isLoggedIn, coffeesCtrl.update)
 router.delete('/:id', isLoggedIn, coffeesCtrl.delete)
+router.post('/:id/ingredients', coffeesCtrl.addTo);
 
 export {
   router

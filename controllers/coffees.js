@@ -1,5 +1,5 @@
 import { Coffee } from '../models/coffee.js'
-
+import { Ingredient } from '../models/ingredient.js'
 
 function index(req, res) {
   Coffee.find({})
@@ -28,18 +28,35 @@ function create(req, res) {
   })
 }
 
+// function show(req, res) {
+//   Coffee.findById(req.params.id)
+//   .populate("barista")
+//   .populate("ingredients")
+//   .then(coffee => {
+//     res.render('coffees/show', {
+//       coffee,
+//       ingredients,
+//       title: "Coffee Details"
+//     })
+//   })
+//   .catch(err => {
+//     console.log(err)
+//     res.redirect('/coffees')
+//   })
+// }
+
 function show(req, res) {
   Coffee.findById(req.params.id)
-  .populate("barista")
-  .then(coffee => {
-    res.render('coffees/show', {
-      coffee,
-      title: "Coffee Details"
+  .populate('barista')
+  .populate('ingredients')
+  .exec(function(err, coffee) {
+  Ingredient.find({_id: {$nin: coffee.ingredients}}, function(err, ingredients) {
+      res.render('coffees/show', {
+        title: 'Coffee Details', 
+        coffee,
+        ingredients,
+      })
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/coffees')
   })
 }
 
@@ -109,6 +126,15 @@ function deleteCoffee(req, res) {
   })
 }
 
+function addTo(req, res) {
+  Coffee.findById(req.params.id, function(err, coffee) {
+    coffee.ingredients.push(req.body.ingredientId)
+    coffee.save(function(err) {
+      res.redirect(`/coffees/${coffee._id}`)
+    })
+  })
+}
+
 export {
   index,
   create,
@@ -117,5 +143,6 @@ export {
   edit,
   update,
   deleteCoffee as delete,
+  addTo,
 }
 

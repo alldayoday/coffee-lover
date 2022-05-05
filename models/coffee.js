@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const coffeeSchema = new Schema({
   name: String,
-  ingred: String,
+  ingredients: [{type: Schema.Types.ObjectId, ref: 'Ingredient'}],
   hot: Boolean,
   barista: {type: Schema.Types.ObjectId, ref: "Profile"}
 })
