@@ -1,0 +1,45 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <% if (profile.avatar) { %>
+    <div>
+      <img 
+        class="profile-avatar"
+        src="<%= profile.avatar %>" 
+        alt="<%= profile.name %> avatar"
+      >
+    </div>
+  <% } %>
+  <h1>It's <%= isSelf ? "you" : profile.name %>!</h1>
+  <% if (isSelf)  {%> 
+    <h2>Add a cat!</h2>
+    <form action="/profiles/<%= profile._id %>/shops" method="POST">
+      <label>
+        Name: 
+        <input type="text" name="name" autocomplete="off">
+      </label>
+      <label>
+        Location: 
+        <input type="text" name="location" autocomplete="off">
+      </label>
+      <button type="submit">Add Shop</button>
+    </form>
+  <% } %>
+  <% if (profile.shops.length)  {%>
+    <h2>
+      <%= isSelf ? "You have" : `${profile.name} has` %> a few favorite shops!
+    </h2>
+    <% profile.shops.forEach(shop => { %>
+      <h3>
+        <%= shop.name %> is located at <%= shop.location %>
+      </h3>
+    <% }) %>
+  <% } else { %>
+    <h2>
+      <%= isSelf ? "You don't" : `${profile.name} doesn't` %> have any shops listed.
+    </h2> 
+  <% } %> 
+</main>
+
+<%- include('../partials/footer') %>
