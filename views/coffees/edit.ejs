@@ -1,0 +1,37 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Remake Your Coffee</h1>
+  <form action="/coffees/<%= coffee._id %>?_method=PUT" method="POST">
+    <label>
+      Name: 
+      <input 
+        type="text"
+        name="name" 
+        value="<%= coffee.name %>" 
+        autocomplete="off"
+      >
+    </label>
+    <label>
+      Ingredients:
+      <input 
+        type="text"
+        name="ingred" 
+        value="<%= coffee.ingred %>" 
+        autocomplete="off"
+      >
+    </label>
+    <label>
+      Hot?
+      <input 
+        type="checkbox" 
+        name="hot" 
+				<%= coffee.hot ? "checked" : "" %> 
+      >
+    </label>
+    <button type="submit">Serve Again</button>
+  </form>
+</section>
+
+<%- include('../partials/footer') %>

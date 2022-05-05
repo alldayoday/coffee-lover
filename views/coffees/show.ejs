@@ -12,11 +12,18 @@
       method="POST"
     >
       <button class="btn" type="submit">
-        Make coffee <%= taco.hot ? 'iced' : 'hot' %>
+        Make coffee <%= coffee.hot ? 'iced' : 'hot' %>
       </button>
     </form>
   <% } %>
-  <%# New code above %>
+	<% if (coffee.barista.equals(user?.profile._id)) { %>
+    <form action="/coffees/<%= coffee._id %>/edit" method="GET">
+      <button class="btn" type="submit">Remake coffee</button>
+    </form>
+    <form action="/coffees/<%= coffee._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete this coffee💀</button>
+    </form>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>
