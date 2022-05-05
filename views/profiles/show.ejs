@@ -28,11 +28,20 @@
   <% } %>
   <% if (profile.shops.length)  {%>
     <h2>
-      <%= isSelf ? "You have" : `${profile.name} has` %> a few favorite shops!
+      <%= isSelf ? "You have" : `${profile.name} has` %> favorite shops
     </h2>
     <% profile.shops.forEach(shop => { %>
       <h3>
         <%= shop.name %> is located at <%= shop.location %>
+        <% if (isSelf) { %> 
+          <form 
+            action="/profiles/shops/<%= shop._id %>?_method=DELETE" 
+            method="POST"
+            style="display: inline-block;"
+          >
+            <button type="submit">Leave <%= shop.name %></button>
+          </form>
+        <% } %> 
       </h3>
     <% }) %>
   <% } else { %>

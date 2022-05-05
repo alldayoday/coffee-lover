@@ -6,7 +6,7 @@ const router = Router()
 router.get('/', isLoggedIn, profilesCtrl.index)
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 router.post('/:id/shops', isLoggedIn, profilesCtrl.createShop)
-
+router.delete('/shops/:id', isLoggedIn, profilesCtrl.deleteShop)
 
 export {
   router

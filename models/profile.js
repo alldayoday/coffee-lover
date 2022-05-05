@@ -1,5 +1,12 @@
 import mongoose from 'mongoose'
 
+const shopSchema = new mongoose.Schema({
+  name: String,
+  location: String
+}, {
+  timestamps: true
+})
+
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
@@ -8,12 +15,6 @@ const profileSchema = new mongoose.Schema({
   timestamps: true
 })
 
-const shopSchema = new mongoose.Schema({
-  name: String,
-  location: String
-}, {
-  timestamps: true
-})
 
 const Profile = mongoose.model('Profile', profileSchema)
 
