@@ -132,5 +132,12 @@ h4{
 
 #ingredList{
   display: flex;
-  flex-direction:column;
+  flex-direction:row;
+  justify-content: center;
+}
+
+p{
+  margin: 10px;
+  margin-top: 0px;
+  font-size: 2rem;
 }
