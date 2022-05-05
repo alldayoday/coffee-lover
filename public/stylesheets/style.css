@@ -23,10 +23,12 @@ body {
   font-family: 'Amatic SC', cursive;
   margin: 0;
   text-align: center;
+  background-image: url('../coffee.png');
+  background-size:cover;
 }
 
 nav {
-  background-color: rgb(242, 188, 125);
+  background-color: #472518;
   font-size: 1.6rem;
   display: flex;
   justify-content: space-around;
@@ -35,7 +37,7 @@ nav {
 }
 
 nav a{
-  color: black;
+  color:   rgb(242, 188, 125);
 }
 
 main {
@@ -43,6 +45,10 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+li a{
+  color: black;
+  text-decoration:double;
 }
 
 h1 {
@@ -107,9 +113,6 @@ nav > a {
   margin-top: 50px;
 }
 
-#indexProf{
-  background-color: rgb(107, 69, 27);
-}
 
 li{
   font-size: 2.6rem;
@@ -117,4 +120,8 @@ li{
 
 label{
   font-size: 2.6rem;
+}
+
+#profCard{
+  border: 5px solid #472518;
 }
