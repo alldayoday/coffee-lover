@@ -1,0 +1,36 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <section>
+    <h1>Coffees</h1>
+    <%# New Code Below %>
+    <% if (user) { %>
+      <h2>Make a Coffee</h2>
+      <form action="/coffees" method="POST">
+        <label>
+          Name: 
+          <input type="text" name="name" autocomplete="off">
+        </label>
+        <label>
+          Ingredients: 
+          <input type="text" name="ingred" autocomplete="off">
+        </label>
+        <label>
+          Hot?
+          <input type="checkbox" name="hot">
+        </label>
+        <button type="submit">Make</button>
+      </form>
+    <% } %>
+  <h2>this is a list of all the coffees</h2>
+	<ul>
+  <% coffees.forEach(coffee=> { %>
+    <li>☕️
+      <a href="/coffees/<%= coffee._id %>"><%= coffee.name %></a> 
+      is a <%= coffee.hot ? 'Hot Beverage' : 'Iced Beverage' %></li>
+  <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
