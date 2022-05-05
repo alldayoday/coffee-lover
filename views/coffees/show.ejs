@@ -5,7 +5,7 @@
 	<p>From the kitchen of <%= coffee.barista.name %>...</p>
   <h1><%= coffee.name %></h1>
   <h3><%= coffee.ingred %></h3>
-  <h2>This is a <%= coffee.hot ? 'Hot Beverage' : 'Iced Beverage' %></h2>
+  <h2>This is a<%= coffee.hot ? ' Hot Beverage' : 'n Iced Beverage' %></h2>
   <% if (user) { %>
     <form 
       action="/coffees/<%= coffee._id %>/flip-hot?_method=PATCH" 
