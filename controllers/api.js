@@ -2,8 +2,8 @@ import { Ingredient } from '../models/ingredient.js'
 
 function createIngredient(req, res) {
   Ingredient.create(req.body)
-  .then(ingredient => {
-    res.redirect('/ingredients')
+  .then(ingredients => {
+    res.redirect('ingredients/')
   })
   .catch(err => {
     console.log(err)
